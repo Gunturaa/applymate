@@ -2,7 +2,7 @@ import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Bot, AlertCircle } from "lucide-react"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 
 export default async function AIAssistantHubPage() {
   const supabase = await createClient()
@@ -45,9 +45,9 @@ export default async function AIAssistantHubPage() {
                   You need to create a job application first before using the AI Assistant.
                 </p>
               </div>
-              <Button asChild className="mt-4">
-                <Link href="/applications/new">Create Application</Link>
-              </Button>
+              <Link href="/applications/new" className={buttonVariants({ className: "mt-4" })}>
+                Create Application
+              </Link>
             </CardContent>
           </Card>
         ) : (
@@ -55,15 +55,13 @@ export default async function AIAssistantHubPage() {
             <Card key={app.id} className="hover:border-primary/50 transition-colors">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg">{app.position}</CardTitle>
-                <CardDescription>{app.companies?.name || 'Unknown Company'}</CardDescription>
+                <CardDescription>{(app.companies as any)?.name || 'Unknown Company'}</CardDescription>
               </CardHeader>
               <CardContent>
-                <Button asChild className="w-full" variant="outline">
-                  <Link href={`/applications/${app.id}`}>
-                    <Bot className="mr-2 h-4 w-4" />
-                    Open AI Assistant
-                  </Link>
-                </Button>
+                <Link href={`/applications/${app.id}`} className={buttonVariants({ variant: "outline", className: "w-full" })}>
+                  <Bot className="mr-2 h-4 w-4" />
+                  Open AI Assistant
+                </Link>
               </CardContent>
             </Card>
           ))
