@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ApplyMate - Job Application Tracker
 
-## Getting Started
+ApplyMate is a modern, responsive web application designed to help job seekers organize, track, and optimize their job search process. Built with Next.js 15, Supabase, and AI capabilities, it acts as your personal job-hunting dashboard.
 
-First, run the development server:
+## 🚀 Key Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+*   **📊 Comprehensive Dashboard**: Get a birds-eye view of your job search progress, upcoming interviews, and recent applications.
+*   **📋 Kanban Board**: Drag and drop your job applications across different stages (Wishlist, Applied, Assessment, Interview, Offer, Rejected) for intuitive tracking.
+*   **🤖 AI Assistant (Powered by Gemini)**: 
+    *   Generate custom cover letters.
+    *   Receive tailored interview preparation questions based on the job role.
+    *   Get resume optimization tips.
+*   **📈 Analytics & Insights**: Visualize your interview rates, offer rates, and application trends over time using interactive charts.
+*   **📅 Interview Calendar**: Never miss an interview with the built-in calendar view.
+*   **🌐 Multi-Language Support (i18n)**: Fully supports both **English** and **Bahasa Indonesia** with seamless runtime switching.
+*   **🌓 Dark/Light Mode**: First-class support for dark mode, respecting system preferences.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+*   **Framework**: [Next.js 15](https://nextjs.org/) (App Router, Server Actions)
+*   **Database & Auth**: [Supabase](https://supabase.com/)
+*   **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+*   **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
+*   **Icons**: [Lucide React](https://lucide.dev/)
+*   **Drag & Drop**: `@hello-pangea/dnd`
+*   **Charts**: `recharts`
+*   **AI Integration**: Google Gemini SDK (`@google/genai`)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 💻 Getting Started
 
-## Learn More
+### Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+*   Node.js (v18 or higher)
+*   npm, yarn, or pnpm
+*   A Supabase Project
+*   A Google Gemini API Key
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Gunturaa/applymate.git
+   cd applymate
+   ```
 
-## Deploy on Vercel
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Set up Environment Variables:**
+   Create a `.env.local` file in the root directory and add the following keys:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   GEMINI_API_KEY=your_gemini_api_key
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 📱 Responsive Design
+ApplyMate is fully responsive and optimized for mobile devices, featuring a sliding mobile menu and adaptable layouts for seamless usage on the go.
+
+## 📄 License
+This project is open-source and available under the [MIT License](LICENSE).

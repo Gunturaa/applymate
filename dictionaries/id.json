@@ -1,0 +1,106 @@
+{
+  "sidebar": {
+    "dashboard": "Dasbor",
+    "applications": "Lamaran",
+    "kanban": "Papan Kanban",
+    "analytics": "Analitik",
+    "calendar": "Kalender",
+    "interviews": "Wawancara",
+    "wishlist": "Tersimpan",
+    "resumes": "Resume/CV",
+    "settings": "Pengaturan"
+  },
+  "header": {
+    "search": "Cari lamaran...",
+    "language": "Bahasa",
+    "theme": "Tema"
+  },
+  "aiAssistant": {
+    "title": "Asisten AI (Gemini)",
+    "description": "Dapatkan wawasan bertenaga AI yang disesuaikan khusus untuk lamaran pekerjaan ini.",
+    "tabInterview": "Persiapan Wawancara",
+    "tabResume": "Analisis Resume",
+    "interviewTitle": "Buat Pertanyaan Wawancara",
+    "interviewDesc": "Dapatkan pertanyaan teknis dan perilaku yang disesuaikan berdasarkan deskripsi pekerjaan.",
+    "btnGenerateInterview": "Buat Materi Persiapan",
+    "loadingInterview": "Gemini sedang menganalisis deskripsi pekerjaan...",
+    "btnRegenerate": "Buat Ulang",
+    "resumeTitle": "Analisis Kecocokan Resume",
+    "resumeDesc": "Gemini akan membaca PDF resume utama Anda dan membandingkannya dengan deskripsi pekerjaan untuk menemukan kekuatan dan celah.",
+    "btnAnalyzeResume": "Analisis Resume",
+    "loadingResume": "Gemini sedang membaca resume Anda dan membandingkannya dengan lowongan..."
+  },
+  "dashboard": {
+    "title": "Dasbor",
+    "recentApplications": "Lamaran Terbaru",
+    "upcomingInterviews": "Wawancara Mendatang",
+    "stats": {
+      "totalApplications": "Total Lamaran",
+      "activeProcesses": "Proses Aktif",
+      "interviews": "Jadwal Wawancara",
+      "offers": "Tawaran Diterima",
+      "vsLastMonth": "vs bulan lalu"
+    },
+    "viewAll": "Lihat semua",
+    "noApplications": "Belum ada lamaran",
+    "noInterviews": "Tidak ada wawancara"
+  },
+  "applications": {
+    "title": "Daftar Lamaran",
+    "newApplication": "Lamaran Baru",
+    "kanbanView": "Tampilan Kanban",
+    "listView": "Tampilan Daftar",
+    "columns": {
+      "company": "Perusahaan",
+      "position": "Posisi",
+      "status": "Status",
+      "date": "Tanggal Melamar",
+      "actions": "Aksi"
+    },
+    "status": {
+      "wishlist": "Tersimpan",
+      "applied": "Terkirim",
+      "screening": "Seleksi Berkas",
+      "assessment": "Penilaian/Tes",
+      "interview": "Wawancara",
+      "offer": "Tawaran",
+      "rejected": "Ditolak"
+    }
+  },
+  "kanban": {
+    "title": "Papan Kanban"
+  },
+  "analytics": {
+    "title": "Analitik",
+    "conversionRate": "Tingkat Konversi",
+    "pipelineHealth": "Kesehatan Pipeline",
+    "applicationsByStatus": "Lamaran berdasarkan Status"
+  },
+  "resumes": {
+    "title": "Resume / CV",
+    "upload": "Unggah Resume",
+    "noResumes": "Belum ada resume yang diunggah",
+    "defaultBadge": "Utama"
+  },
+  "interviews": {
+    "title": "Wawancara",
+    "logInterview": "Catat Wawancara"
+  },
+  "wishlist": {
+    "title": "Pekerjaan Tersimpan",
+    "addJob": "Simpan Pekerjaan"
+  },
+  "settings": {
+    "title": "Pengaturan",
+    "profile": "Profil",
+    "preferences": "Preferensi"
+  },
+  "common": {
+    "save": "Simpan",
+    "cancel": "Batal",
+    "delete": "Hapus",
+    "edit": "Ubah",
+    "unauthorized": "Tidak Sah",
+    "notFound": "Tidak Ditemukan"
+  }
+}

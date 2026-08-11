@@ -1,0 +1,40 @@
+- `[x]` Phase 1: Project Setup & Authentication
+  - `[x]` Initialize Next.js project
+  - `[x]` Install shadcn/ui, Lucide, Recharts, Framer Motion
+  - `[x]` Setup Supabase client
+  - `[x]` Implement Supabase Auth (Login/Register)
+  - `[x]` Create SQL Migrations
+  - `[x]` Set up RLS
+  - `[x]` Set up Landing Page layout
+- `[x]` Phase 2: Core Dashboard & Applications
+  - `[x]` Dashboard layout and navigation
+  - `[x]` Dashboard overview
+  - `[x]` Application list page
+  - `[x]` "Add Application" page
+  - `[x]` Detailed Application view page
+- `[x]` Phase 3: Advanced Views & Interviews
+  - `[x]` Implement Kanban Board (drag-and-drop)
+  - `[x]` Build Calendar view
+  - `[x]` Create Interview management page and preparation
+  - `[x]` Implement Reminders logic
+- `[x]` Phase 5: Integrasi Data Asli (Supabase CRUD)
+  - `[x]` Hubungkan daftar & detail lamaran dengan DB
+  - `[x]` Buat Server Actions untuk CRUD lamaran
+  - `[x]` Hubungkan Kanban Board drag-and-drop dengan DB
+  - `[x]` Hubungkan Kalender dan Wawancara dengan DB
+  - `[x]` Implementasi unggahan file nyata (Supabase Storage)
+- `[x]` Phase 6: Penyempurnaan UX & Pengaturan (Polish & Settings)
+  - `[x]` Buat halaman Pengaturan
+  - `[x]` Tambahkan integrasi Dark Mode
+  - `[x]` Buat status Loading (Skeleton UI)
+  - `[x]` Buat status Kosong (Empty states)
+  - `[x]` Perbaiki responsivitas Sidebar di Mobile
+- `[ ]` Phase 7: Asisten AI (Besok)
+  - `[ ]` Setup integrasi AI (OpenAI/Google Gemini API)
+  - `[ ]` Fitur Analisis Resume: Beri masukan (feedback) pada resume berdasarkan lowongan.
+  - `[ ]` Fitur Persiapan Wawancara: Buat contoh soal teknis/non-teknis dari AI sesuai posisi lamaran.
+  - `[ ]` UI/UX interaksi dengan Asisten AI.
+- `[ ]` Phase 8: Final Polish & Deployment
+  - `[ ]` Uji coba end-to-end fitur (Pendaftaran -> Lamaran -> Wawancara).
+  - `[ ]` Optimasi performa dan cache.
+  - `[ ]` Penulisan README.md dan dokumentasi akhir.

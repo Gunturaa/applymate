@@ -1,0 +1,106 @@
+{
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "applications": "Applications",
+    "kanban": "Kanban Board",
+    "analytics": "Analytics",
+    "calendar": "Calendar",
+    "interviews": "Interviews",
+    "wishlist": "Wishlist",
+    "resumes": "Resumes",
+    "settings": "Settings"
+  },
+  "header": {
+    "search": "Search applications...",
+    "language": "Language",
+    "theme": "Theme"
+  },
+  "aiAssistant": {
+    "title": "AI Assistant (Gemini)",
+    "description": "Get AI-powered insights tailored to this specific job application.",
+    "tabInterview": "Interview Prep",
+    "tabResume": "Resume Analysis",
+    "interviewTitle": "Generate Interview Questions",
+    "interviewDesc": "Get tailored technical and behavioral questions based on the job description.",
+    "btnGenerateInterview": "Generate Prep Material",
+    "loadingInterview": "Gemini is analyzing the job description...",
+    "btnRegenerate": "Regenerate",
+    "resumeTitle": "Analyze Resume Fit",
+    "resumeDesc": "Gemini will read your default resume PDF and compare it against the job description to find strengths and gaps.",
+    "btnAnalyzeResume": "Analyze Resume",
+    "loadingResume": "Gemini is reading your resume and comparing it to the role..."
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "recentApplications": "Recent Applications",
+    "upcomingInterviews": "Upcoming Interviews",
+    "stats": {
+      "totalApplications": "Total Applications",
+      "activeProcesses": "Active Processes",
+      "interviews": "Interviews Scheduled",
+      "offers": "Offers Received",
+      "vsLastMonth": "vs last month"
+    },
+    "viewAll": "View all",
+    "noApplications": "No applications yet",
+    "noInterviews": "No upcoming interviews"
+  },
+  "applications": {
+    "title": "Applications",
+    "newApplication": "New Application",
+    "kanbanView": "Kanban View",
+    "listView": "List View",
+    "columns": {
+      "company": "Company",
+      "position": "Position",
+      "status": "Status",
+      "date": "Date Applied",
+      "actions": "Actions"
+    },
+    "status": {
+      "wishlist": "Wishlist",
+      "applied": "Applied",
+      "screening": "Screening",
+      "assessment": "Assessment",
+      "interview": "Interview",
+      "offer": "Offer",
+      "rejected": "Rejected"
+    }
+  },
+  "kanban": {
+    "title": "Kanban Board"
+  },
+  "analytics": {
+    "title": "Analytics",
+    "conversionRate": "Conversion Rate",
+    "pipelineHealth": "Pipeline Health",
+    "applicationsByStatus": "Applications by Status"
+  },
+  "resumes": {
+    "title": "Resumes",
+    "upload": "Upload Resume",
+    "noResumes": "No resumes uploaded yet",
+    "defaultBadge": "Default"
+  },
+  "interviews": {
+    "title": "Interviews",
+    "logInterview": "Log Interview"
+  },
+  "wishlist": {
+    "title": "Wishlist",
+    "addJob": "Save Job"
+  },
+  "settings": {
+    "title": "Settings",
+    "profile": "Profile",
+    "preferences": "Preferences"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "unauthorized": "Unauthorized",
+    "notFound": "Not Found"
+  }
+}
