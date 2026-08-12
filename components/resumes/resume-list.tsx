@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { FileText, MoreVertical, Search, Download, Trash2, Eye, Loader2 } from "lucide-react"
+import { FileText, MoreVertical, Search, Download, Trash2, Eye, Loader2, Bot } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,11 +13,26 @@ import {
   DropdownMenuTrigger,
   DropdownMenuGroup
 } from "@/components/ui/dropdown-menu"
-import { deleteResume, getResumeDownloadUrl } from "@/app/(dashboard)/resumes/actions"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
+import { deleteResume, getResumeDownloadUrl, generateGeneralResumeFeedback } from "@/app/(dashboard)/resumes/actions"
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 
 export function ResumeList({ resumes }: { resumes: any[] }) {
   const [search, setSearch] = useState("")
   const [deletingId, setDeletingId] = useState<string | null>(null)
+  const [isReviewingId, setIsReviewingId] = useState<string | null>(null)
+  const [aiFeedback, setAiFeedback] = useState<{ isOpen: boolean; content: string; resumeName: string }>({
+    isOpen: false,
+    content: "",
+    resumeName: ""
+  })
 
   const filteredResumes = resumes.filter(r => 
     r.name.toLowerCase().includes(search.toLowerCase()) || 
@@ -42,6 +57,22 @@ export function ResumeList({ resumes }: { resumes: any[] }) {
     
     if (result.error) {
       alert("Error deleting resume: " + result.error)
+    }
+  }
+
+  const handleAiReview = async (id: string, filePath: string, name: string) => {
+    setIsReviewingId(id)
+    const result = await generateGeneralResumeFeedback(id, filePath)
+    setIsReviewingId(null)
+    
+    if (result.error) {
+      alert("Error: " + result.error)
+    } else if (result.success && result.text) {
+      setAiFeedback({
+        isOpen: true,
+        content: result.text,
+        resumeName: name
+      })
     }
   }
 
@@ -104,6 +135,10 @@ export function ResumeList({ resumes }: { resumes: any[] }) {
                       <Button variant="ghost" size="sm" className="h-8 text-xs" onClick={() => handleDownload(resume.file_url)}>
                         <Download className="mr-2 h-3 w-3" /> Download
                       </Button>
+                      <Button variant="ghost" size="sm" className="h-8 text-xs text-primary" onClick={() => handleAiReview(resume.id, resume.file_url, resume.name)} disabled={isReviewingId === resume.id}>
+                        {isReviewingId === resume.id ? <Loader2 className="mr-2 h-3 w-3 animate-spin" /> : <Bot className="mr-2 h-3 w-3" />}
+                        AI Review
+                      </Button>
                     </div>
                     <DropdownMenu>
                       <DropdownMenuTrigger render={<Button variant="ghost" size="icon" className="h-8 w-8" disabled={isDeleting} />}>
@@ -132,6 +167,24 @@ export function ResumeList({ resumes }: { resumes: any[] }) {
           })
         )}
       </div>
+      <Dialog open={aiFeedback.isOpen} onOpenChange={(open) => setAiFeedback(prev => ({ ...prev, isOpen: open }))}>
+        <DialogContent className="max-w-3xl max-h-[85vh] overflow-hidden flex flex-col">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <Bot className="h-5 w-5 text-primary" />
+              AI Resume Review
+            </DialogTitle>
+            <DialogDescription>
+              Feedback for: {aiFeedback.resumeName}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="overflow-y-auto pr-4 py-4 prose prose-sm dark:prose-invert max-w-none w-full">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {aiFeedback.content}
+            </ReactMarkdown>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

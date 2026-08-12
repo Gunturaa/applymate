@@ -1,6 +1,6 @@
 import React from "react"
 import { createClient } from "@/lib/supabase/server"
-import { ProfileForm } from "@/components/settings/profile-form"
+import { SettingsTabs } from "@/components/settings/settings-tabs"
 import { getLanguage } from "@/lib/i18n/server"
 
 export default async function SettingsPage() {
@@ -27,26 +27,7 @@ export default async function SettingsPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="md:col-span-1 border-r pr-6 space-y-2">
-          {/* Navigation for settings if we had more sections */}
-          <div className="bg-primary/10 text-primary font-medium px-4 py-2 rounded-md">
-            {dictionary.settings.profile}
-          </div>
-          <div className="text-muted-foreground hover:bg-muted px-4 py-2 rounded-md cursor-pointer">
-            Account
-          </div>
-          <div className="text-muted-foreground hover:bg-muted px-4 py-2 rounded-md cursor-pointer">
-            Notifications
-          </div>
-          <div className="text-muted-foreground hover:bg-muted px-4 py-2 rounded-md cursor-pointer">
-            Appearance
-          </div>
-        </div>
-        <div className="md:col-span-3">
-          <ProfileForm profile={profile} />
-        </div>
-      </div>
+      <SettingsTabs profile={profile} />
     </div>
   )
 }

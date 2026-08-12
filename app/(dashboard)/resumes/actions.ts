@@ -2,6 +2,10 @@
 import { createClient } from "@/lib/supabase/server"
 import { revalidatePath } from "next/cache"
 import { createClient as createSupabaseAdmin } from "@supabase/supabase-js"
+import { GoogleGenAI } from "@google/genai"
+import { cookies } from "next/headers"
+
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY })
 
 export async function uploadResume(formData: FormData) {
   const supabase = await createClient()
@@ -117,4 +121,56 @@ export async function getResumeDownloadUrl(filePath: string) {
   }
   
   return { url: data.signedUrl }
+}
+
+export async function generateGeneralResumeFeedback(resumeId: string, filePath: string) {
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) return { error: "Unauthorized" }
+
+  const cookieStore = await cookies()
+  const locale = cookieStore.get("NEXT_LOCALE")?.value || "en"
+  const langInstruction = locale === "id" ? "PENTING: Jawablah SEMUA dalam Bahasa Indonesia." : "IMPORTANT: Please reply entirely in English."
+
+  try {
+    // 1. Get signed URL for the PDF
+    const { url, error: urlError } = await getResumeDownloadUrl(filePath)
+    if (urlError || !url) return { error: "Failed to access resume file." }
+
+    // 2. Fetch PDF content as buffer
+    const res = await fetch(url)
+    if (!res.ok) {
+       return { error: "Failed to download the resume file." }
+    }
+    const arrayBuffer = await res.arrayBuffer()
+    const buffer = Buffer.from(arrayBuffer)
+    const base64Data = buffer.toString('base64')
+
+    // 3. Prompt Gemini
+    const prompt = `You are an expert tech recruiter and ATS (Applicant Tracking System) specialist.
+I have attached my resume as a PDF. Please analyze my resume generally (without a specific job description) and provide a comprehensive review:
+
+1. **Estimated ATS Score**: Give a rough score out of 100 based on standard ATS readability and formatting.
+2. **Strengths**: What are the strongest points of this resume?
+3. **Weaknesses & Missing Info**: What standard resume sections or details are missing or poorly explained?
+4. **Formatting & Structure Feedback**: Is the layout clean, professional, and easy to parse?
+5. **Actionable Suggestions**: Top 3 specific tips to improve this resume for tech roles.
+
+Format the response beautifully using Markdown. 
+Use clear headings, bullet points, and bold text for emphasis.
+${langInstruction}`
+
+    const response = await ai.models.generateContent({
+        model: 'gemini-flash-latest',
+        contents: [
+            { inlineData: { mimeType: 'application/pdf', data: base64Data } },
+            prompt
+        ]
+    })
+    
+    return { success: true, text: response.text }
+  } catch (e: any) {
+    console.error("Gemini API Error:", e)
+    return { error: "Failed to generate resume feedback. Ensure your resume is a valid PDF." }
+  }
 }

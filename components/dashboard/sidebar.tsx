@@ -13,7 +13,8 @@ import {
   FileText, 
   BarChart, 
   Bot, 
-  Settings 
+  Settings,
+  Search as SearchIcon
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { GlobalSearch } from "./global-search"
@@ -27,6 +28,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
     { name: dictionary.sidebar.applications, href: '/applications', icon: Briefcase },
     { name: dictionary.sidebar.kanban, href: '/kanban', icon: Kanban },
     { name: dictionary.sidebar.calendar, href: '/calendar', icon: Calendar },
+    { name: dictionary.sidebar.discover, href: '/discover', icon: SearchIcon },
     { name: dictionary.sidebar.interviews, href: '/interviews', icon: Video },
     { name: dictionary.sidebar.wishlist, href: '/wishlist', icon: Heart },
     { name: dictionary.sidebar.resumes, href: '/resumes', icon: FileText },

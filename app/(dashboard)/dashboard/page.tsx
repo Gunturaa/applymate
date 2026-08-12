@@ -2,6 +2,7 @@ import { StatsCards } from "@/components/dashboard/stats-cards"
 import { FunnelChart } from "@/components/dashboard/funnel-chart"
 import { RecentApplications } from "@/components/dashboard/recent-applications"
 import { UpcomingInterviews } from "@/components/dashboard/upcoming-interviews"
+import { MotivationalQuote } from "@/components/dashboard/motivational-quote"
 import { createClient } from "@/lib/supabase/server"
 import { getLanguage } from "@/lib/i18n/server"
 
@@ -49,11 +50,9 @@ export default async function DashboardPage() {
       <div className="flex items-center justify-between space-y-2">
         <h2 className="text-3xl font-bold tracking-tight">{locale === "id" ? `Selamat pagi, ${firstName} 👋` : `Good morning, ${firstName} 👋`}</h2>
       </div>
-      <p className="text-muted-foreground">
-        {locale === "id" ? "Berikut perkembangan pencarian kerja Anda." : "Here's your job search progress."}
-      </p>
-
-      <div className="space-y-4">
+      <MotivationalQuote locale={locale} />
+      
+      <div className="space-y-4 pt-2">
         <StatsCards stats={stats} />
         
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
